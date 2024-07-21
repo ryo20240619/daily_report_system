@@ -2,6 +2,8 @@ package actions;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -104,6 +106,10 @@ public class ReportAction extends ActionBase {
                 day = LocalDate.parse(getRequestParam(AttributeConst.REP_DATE));
             }
 
+            //出勤時間と退勤時間についてString型からLocalDateTime型に変換
+            LocalDateTime startTime = LocalDateTime.parse(day + "T" + getRequestParam(AttributeConst.REP_STARTTIME),DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+            LocalDateTime finishTime = LocalDateTime.parse(day + "T" + getRequestParam(AttributeConst.REP_FINISHTIME),DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+
             //セッションからログイン中の従業員情報を取得
             EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
 
@@ -115,7 +121,9 @@ public class ReportAction extends ActionBase {
                     getRequestParam(AttributeConst.REP_TITLE),
                     getRequestParam(AttributeConst.REP_CONTENT),
                     null,
-                    null);
+                    null,
+                    startTime,
+                    finishTime);
 
             //日報情報登録
             List<String> errors = service.create(rv);
@@ -165,7 +173,7 @@ public class ReportAction extends ActionBase {
             forward(ForwardConst.FW_REP_SHOW);
         }
     }
-    
+
     /**
      * 編集画面を表示する
      * @throws ServletException
@@ -194,7 +202,7 @@ public class ReportAction extends ActionBase {
         }
 
     }
-    
+
     /**
      * 更新を行う
      * @throws ServletException
