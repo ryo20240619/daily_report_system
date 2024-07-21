@@ -2,8 +2,6 @@ package actions;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -107,8 +105,8 @@ public class ReportAction extends ActionBase {
             }
 
             //出勤時間と退勤時間についてString型からLocalDateTime型に変換
-            LocalDateTime startTime = LocalDateTime.parse(day + "T" + getRequestParam(AttributeConst.REP_STARTTIME),DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-            LocalDateTime finishTime = LocalDateTime.parse(day + "T" + getRequestParam(AttributeConst.REP_FINISHTIME),DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+            String startTime = getRequestParam(AttributeConst.REP_STARTTIME);
+            String finishTime = getRequestParam(AttributeConst.REP_FINISHTIME);
 
             //セッションからログイン中の従業員情報を取得
             EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
