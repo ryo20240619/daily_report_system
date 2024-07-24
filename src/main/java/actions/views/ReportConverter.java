@@ -82,7 +82,7 @@ public class ReportConverter {
         r.setCreatedAt(rv.getCreatedAt());
         r.setUpdatedAt(rv.getUpdatedAt());
         r.setStartTime(rv.getStartTime());
-        r.setStartTime(rv.getFinishTime());
+        r.setFinishTime(rv.getFinishTime());
 
 
     }
