@@ -121,7 +121,8 @@ public class ReportAction extends ActionBase {
                     null,
                     null,
                     startTime,
-                    finishTime);
+                    finishTime,
+                    null);
 
             //日報情報登録
             List<String> errors = service.create(rv);
