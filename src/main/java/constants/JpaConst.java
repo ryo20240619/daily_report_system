@@ -41,6 +41,7 @@ public interface JpaConst {
     String REP_COL_UPDATED_AT = "updated_at"; //更新日時
     String REP_COL_START_TIME = "start_time"; //出勤時間
     String REP_COL_FINISH_TIME = "finish_time"; //退勤時間
+    String REP_COL_APPROVAL_FIELD = "approval_field"; //承認欄
 
 
     //Entity名

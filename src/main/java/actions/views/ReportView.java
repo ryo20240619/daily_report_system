@@ -62,4 +62,9 @@ public class ReportView {
      * 退勤時間
      */
     private String finishTime;
+    
+    /**
+     * 承認欄
+     */
+    private String approvalField;
 }

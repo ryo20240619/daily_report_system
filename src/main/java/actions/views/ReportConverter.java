@@ -26,7 +26,8 @@ public class ReportConverter {
                 rv.getCreatedAt(),
                 rv.getUpdatedAt(),
                 rv.getStartTime(),
-                rv.getFinishTime());
+                rv.getFinishTime(),
+                rv.getApprovalField());
 
     }
 
@@ -50,7 +51,8 @@ public class ReportConverter {
                 r.getCreatedAt(),
                 r.getUpdatedAt(),
                 r.getStartTime(),
-                r.getFinishTime());
+                r.getFinishTime(),
+                r.getApprovalField());
     }
 
     /**
@@ -83,6 +85,7 @@ public class ReportConverter {
         r.setUpdatedAt(rv.getUpdatedAt());
         r.setStartTime(rv.getStartTime());
         r.setFinishTime(rv.getFinishTime());
+        r.setApprovalField(rv.getApprovalField());
 
 
     }

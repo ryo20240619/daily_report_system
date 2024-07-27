@@ -107,4 +107,10 @@ public class Report {
     @Column(name = JpaConst.REP_COL_FINISH_TIME, nullable = false)
     private String finishTime;
 
+    /**
+     * 承認欄
+     */
+    @Column(name = JpaConst.REP_COL_APPROVAL_FIELD, nullable = true)
+    private String approvalField;
+
 }
