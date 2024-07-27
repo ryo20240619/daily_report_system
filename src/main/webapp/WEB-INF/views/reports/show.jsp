@@ -45,12 +45,22 @@
                     <th>退勤時間</th>
                     <td><c:out value="${report.finishTime}" /></td>
                 </tr>
+                 <tr>
+                    <th>承認欄</th>
+                    <td><c:out value="${report.approvalField}" /></td>
+                </tr>
             </tbody>
         </table>
 
         <c:if test="${sessionScope.login_employee.id == report.employee.id}">
             <p>
                 <a href="<c:url value='?action=${actRep}&command=${commEdt}&id=${report.id}' />">この日報を編集する</a>
+            </p>
+        </c:if>
+
+        <c:if test="${sessionScope.login_employee.id != report.employee.id}">
+            <p>
+                <a href="<c:url value='?action=${actRep}&command=${commApv}&id=${report.id}' />">この日報を承認する</a>
             </p>
         </c:if>
 
