@@ -7,6 +7,7 @@
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
 <c:set var="commEdt" value="${ForwardConst.CMD_EDIT.getValue()}" />
 <c:set var="commApv" value="${ForwardConst.CMD_APPROVE.getValue()}" />
+<c:set var="commApvcan" value="${ForwardConst.CMD_APPROVECANCEL.getValue()}" />
 
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
@@ -59,9 +60,15 @@
             </p>
         </c:if>
 
-       <c:if test="${sessionScope.login_employee.id != report.employee.id}">
+       <c:if test="${sessionScope.login_employee.id != report.employee.id && report.approvalField == null}">
             <p>
                 <a href="<c:url value='?action=${actRep}&command=${commApv}&id=${report.id}' />">この日報を承認する</a>
+            </p>
+       </c:if>
+
+       <c:if test="${sessionScope.login_employee.id != report.employee.id && report.approvalField != null}">
+            <p>
+                <a href="<c:url value='?action=${actRep}&command=${commApvcan}&id=${report.id}' />">この日報の承認をキャンセルする</a>
             </p>
        </c:if>
 
